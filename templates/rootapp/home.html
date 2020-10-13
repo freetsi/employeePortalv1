@@ -1,0 +1,69 @@
+{% extends "../admin/base_site.html" %}
+{% load i18n static %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block content %}
+
+{% if next %}
+{% if user.is_authenticated %}
+
+<p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %}
+{% endif %}
+<div id="content-main">
+    <div class="brand-container">
+        <div class="container">
+            <div class="mini-parent">
+                <div class="mini">
+                    <h2>Data Modelling</h2><hr/>
+                    <div class="container" style="justify-content: start;">
+                        <div class="mini-child">
+                            <a href="/admin/rootapp/employee/">
+                                <img class='menu-img' src="/static/images/employee.png" alt="Maticon">
+                            </a>
+                            <span class="caption" style="margin:auto 10px;">Employees</span>
+                        </div>
+                        <div class="mini-child">
+                            <a href="/admin/rootapp/department/">
+                                <img class='menu-img' src="/static/images/department.jpg" alt="Maticon">
+                            </a>
+                            <span class="caption" style="margin:auto 10px;">Departments</span>
+                        </div>
+                        <div class="mini-child">
+                            <a href="/admin/rootapp/report/">
+                                <img class='menu-img' src="/static/images/reports.png" alt="Maticon">
+                            </a>
+                            <span class="caption" style="margin:auto 10px;">Reports</span>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="mini">
+                    <h2>System Admin</h2><hr/>
+                    <div class="container" style="justify-content: start;">
+                        <div class="mini-child">
+                            <a href="/api/logs/">
+                                <img class='menu-img' src="/static/images/logs.png" alt="Maticon">
+                            </a>
+                            <span class="caption" style="margin:auto 10px;">Logs</span>
+                        </div>
+                        <div class="mini-child">
+                            <a href="/admin/admin/logentry/">
+                                <img class='menu-img' src="/static/images/audit.jpg" alt="Maticon">
+                            </a>
+                            <span class="caption" style="margin:auto 10px;">Audit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "../admin/base_site.html" %}
+{% block content %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %}
+{% endif %}
+
+
+<div class="brand-container">
+<h2>Logs</h2><hr/>
+<div class="container wideflex">
+    <div class="item-container flexitem">
+        <pre id="log" class="log">{{logdata}}</pre>
+    </div>
+</div>
+</div>
+{% endblock %}

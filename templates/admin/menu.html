@@ -1,0 +1,20 @@
+<div class="menu">
+    <a href="{% url 'home' %}">Home</a>
+    <div class="dropdown1">
+            <a class="dropbtn1" href="/admin">Data Modelling</a>
+        <div class="dropdown-content1">
+            <a href="/admin/rootapp/employee/">Employees</a>
+            <a href="/admin/rootapp/department/">Departments</a>
+            <a href="/admin/rootapp/report/">Reports</a>
+        </div>
+    </div>
+    <div class="dropdown2">
+        <a class="dropbtn2" href="/admin">System Admin</a>
+        <div class="dropdown-content2">
+            <a href="/api/logs/">Logs</a>
+            <a href="/admin/admin/logentry/">Audit</a>
+        </div>
+    </div>
+    <a href="/api/tester/">Api Tester</a>
+    <a href="/api/documentation/">Api Documentation</a>
+</div>

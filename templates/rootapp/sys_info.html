@@ -1,0 +1,51 @@
+{% extends "../admin/base_site.html" %}
+{% load i18n static %}
+{% block extrastyle %}{{ block.super }}<link rel=stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %}
+{% endif %}
+
+<div class="brand-container">
+<h2>System Info</h2><hr/>
+<div class="container wideflex">
+	<div class="flexitem">
+		<h3>Configuration </h3>
+		<hr class="light"/>
+		<table class="statistics">
+			<tr> <th>Environment</th><td>{{ environment }}</td></tr>
+			<!-- <tr> <th>Release Version</th><td>{{ version_info }}</td></tr> -->
+			<tr> <th>Database</th><td>{{default_dbalias}} ({{default_dbname}})</td></tr>
+			<tr> <th class="ident">WPPension Database</th><td>{{wp_dbalias}} ({{wp_dbname}})</td></tr>
+			<tr> <th>Groupama Web Services</th><td></td></tr>
+			<tr> <th class="ident">Groupama Web Service Url</th><td>{{groupama_ws_url}}</td></tr>
+			<tr class=" {{ mock_enabled | yesno:'color-active,' }}"> <th class="ident">Outgoing Requests mock enabled</th><td>{{mock_enabled}}</td></tr>
+			<tr> <th>BO Sequence Details</th><td></td></tr>
+			<tr> <th class="ident">Sequence Name</th><td>{{sequence_name}}</td></tr>
+			<tr> <th class="ident">Sequence Type</th><td>{{sequence_type}}</td></tr>
+			<tr> <th class="ident">Sequence pk Name</th><td>{{sequence_pk_name}}</td></tr>
+			<tr> <th>JWT Details</th><td></td></tr>
+			<tr> <th class="ident">Access Token (minutes)</th><td>{{jwt_access}}</td></tr>
+			<tr> <th class="ident">Refresh Token (hours)</th><td>{{jwt_refress}}</td></tr>
+			<tr> <th>Logging</th><td></td></tr>
+			<tr> <th class="ident">Mainlog</th><td>{{log_path}}</td></tr>
+		</table>
+	</div>
+</div>
+</div>
+
+{% endblock %}
