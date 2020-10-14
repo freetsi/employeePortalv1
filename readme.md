@@ -22,14 +22,15 @@ The first part outlines architecture and technology stack and the second part re
 
 1. A console emulator ([cmder](https://cmder.net/) was used during development)
 2. **Python Set up** Python 3.7.4 was used
-In your command line type python -m pip install -U pip
+In your command line type 'python -m pip install -U pip'
 3. **Virtual environment** ([virtualenv 20.0.4](https://pypi.org/project/virtualenv/) was used during development)
  Please create a new environment for this project.
 4. Git clone the project from git hub repository and navigate to that repository
-5. workon \&lt;your\_env\&gt; to enter your environment
-6. pip install requirements.txt to install all the required packages into your environment
+5. workon <your_env> to enter your environment
+6. 'pip install -r requirements.txt' to install all the required packages into your environment
 7. DB (sqlite) will also come into the project with git pull. No migrations are needed.
-8. python mange.py runserverto start server
+8. Please set and ensure that LOG_PATH from settings.py exist in your machine.
+9. python mange.py runserver to start server
 
 ## Testing + API Documentation
 
