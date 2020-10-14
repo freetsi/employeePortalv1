@@ -95,7 +95,7 @@ class ReportForm(forms.Form):
 		title = self.data.get("title")
 		user_id = self.data.get("user_id")
 		priority = self.data.get("priority")
-		id = int(self.data.get("id", 0))
+		id = int(self.data.get("id", -1))
 
 		validation_error_list = []
 
@@ -118,7 +118,7 @@ class ReportForm(forms.Form):
 															   code='Invalid user id'))
 
 		# In case of not null id (update a report) check that this report exists
-		if id != 0:
+		if id != -1:
 			try:
 				my_rep = Report.objects.get(id=id, user = self.my_user)
 			except Report.DoesNotExist:
