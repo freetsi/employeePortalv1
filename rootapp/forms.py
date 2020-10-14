@@ -47,7 +47,8 @@ class EmployeeForm(forms.Form):
 															   " It must be either male/ female".format(gender),
 															   code='Invalid gender'))
 		if self.data.get("department") not in Department.objects.values_list('name', flat=True):
-			validation_error_list.append(forms.ValidationError("Employee Department {} is not acceptable".format(self.data.get("department")),
+			validation_error_list.append(forms.ValidationError("Report Priority {} is not acceptable."
+															   " It must one of {}".format(priority,get_priotities()),
 															   code='Invalid deparment'))
 
 		if not any(self.data.get("title") == e[0] for e in models.TITLE_CHOICES):

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from rootapp import models
+from rootapp.models import Department
 
 
 def get_titles():
@@ -9,6 +10,10 @@ def get_titles():
 		if e[0] != '':
 			title_list.append(e[0])
 	return title_list
+
+def get_departments():
+	dep_list = list(Department.objects.all().values_list("name", flat=True))
+	return dep_list
 
 
 class EmployeeApiSerializer(serializers.Serializer):
@@ -22,7 +27,7 @@ class EmployeeApiSerializer(serializers.Serializer):
 	lastName = serializers.CharField(required=True)
 	fatherName = serializers.CharField(required=True)
 	department = serializers.CharField(required=True,
-									   help_text="'Name' field from Department Model")
+									   help_text="Only {} values are allowed".format(get_departments()))
 	birthDate = serializers.CharField(required=False,
 									  help_text="In 'dd/mm/yyyy' format")
 	phone = serializers.CharField(required=False)
