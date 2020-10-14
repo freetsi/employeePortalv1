@@ -3,18 +3,17 @@ import logging
 import re
 import traceback
 import pandas as pd
-import numpy as np
 
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
+from drf_yasg.openapi import Parameter, IN_QUERY, IN_PATH
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import permission_classes
 from rest_framework.response import Response
@@ -22,15 +21,18 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from employees import settings
-from rootapp.forms import EmployeeForm, ReportForm
+from rootapp.forms import EmployeeForm, ReportForm, FetchReportForm
 from rootapp.functions import process_general_form_errors
 from rootapp.models import Report
 from rootapp.serializers import EmployeeApiSerializer, ErrorSerializer, SucessResponseSerializer, ReportApiSerializer, \
-	SystemErrorSerializer
+	SystemErrorSerializer, FetchReportsResponseSerializer, FetchReportsSerializer
 
 logger = logging.getLogger(__name__)
 
 
+#
+# API 1 Storage of at least one report per employee in a local database.
+#
 class EmployeesApiView(GenericAPIView):
 	""" Create/Update employees """
 
@@ -83,8 +85,11 @@ class EmployeesApiView(GenericAPIView):
 							content_type="application/json", status=422)
 
 
+#
+# API 2 Storage of at least one report per employee in a local database.
+#
 class ReportsApiView(GenericAPIView):
-	""" Create/Update employees """
+	""" Create/Update reports """
 
 	permission_classes = (IsAuthenticated,)
 	serializer_class = ReportApiSerializer
@@ -128,6 +133,53 @@ class ReportsApiView(GenericAPIView):
 			except Exception:
 				logger.critical(traceback.format_exc())
 				return Response({"detail": "Error in api: {}".format(traceback.format_exc())}, status=500, content_type="application/json")
+		else:
+			logger.error(process_general_form_errors(json.loads(form.errors.as_json())))
+			return Response(process_general_form_errors(json.loads(form.errors.as_json())),
+							content_type="application/json", status=422)
+
+
+#
+# API 3 Querying of the database in order to retrieve reports paginated by 10
+#
+class FetchReportsApiView(GenericAPIView):
+	permission_classes = (IsAuthenticated,)
+
+	@swagger_auto_schema(
+		query_serializer=FetchReportsSerializer,
+		operation_summary="Retrieve Reports Query",
+		responses={
+			'200': FetchReportsResponseSerializer,
+			'422': ErrorSerializer,
+			'500': SystemErrorSerializer})
+
+	def get(self, request, *args, **kwargs):
+		request_dict = request.GET.copy()
+		form = FetchReportForm(request_dict)
+
+		if form.is_valid():
+			try:
+				filter_components = {}
+				if 'username' in request_dict:
+					filter_components.update({"user__username": request_dict['username']})
+				if 'priority' in request_dict:
+					filter_components.update({"priority": request_dict['priority']})
+
+				my_queryset = Report.objects.filter(**filter_components).\
+					values("id", "user__id", "user__username", "priority", "title", "description", "solved")
+
+				page = request.GET.get("page", 1)
+				p = Paginator(my_queryset, 10)
+				response_dict = {"body": list(p.page(page).object_list),
+								 "footer": {"page": page,
+											"total_pages": p.num_pages}}
+
+				return Response(response_dict, status=200,
+								content_type="application/json")
+			except Exception:
+				logger.critical(traceback.format_exc())
+				return Response({"detail": "Error in api: {}".format(traceback.format_exc())}, status=500, content_type="application/json")
+
 		else:
 			logger.error(process_general_form_errors(json.loads(form.errors.as_json())))
 			return Response(process_general_form_errors(json.loads(form.errors.as_json())),

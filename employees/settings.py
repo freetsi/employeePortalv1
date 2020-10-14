@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SESSION_COOKIE_AGE = 3600 # on hour in seconds
+
 
 # Application definition
 
@@ -202,6 +204,9 @@ LOGGING = {
         'default': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'midnight',
+            'interval': 2,
+            'backupCount': 7,
             'filename': LOG_PATH,
             'formatter': 'standard',
             'encoding': 'utf8',

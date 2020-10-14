@@ -98,23 +98,25 @@ class ReportForm(forms.Form):
 
 		validation_error_list = []
 
-		# STEP 1
-		# Validate parameters
+		# Check if priority is in the right form
 		if priority not in get_priotities():
 			validation_error_list.append(forms.ValidationError("Report Priority {} is not acceptable."
 															   " It must one of {}".format(priority,get_priotities()),
 															   code='Invalid priority'))
+		# Check if title is in the right form
 		if title not in get_report_title():
 			validation_error_list.append(forms.ValidationError("Report title {} is not acceptable. It must"
 															   "be one of {}".format(title,get_report_title()),
 															   code='Invalid report'))
 
+		# Check if user exists
 		try:
 			self.my_user = User.objects.get(id = user_id)
 		except User.DoesNotExist:
 			validation_error_list.append(forms.ValidationError("User with id {} is not in DB".format(user_id),
 															   code='Invalid user id'))
 
+		# In case of not null id (update a report) check that this report exists
 		if id != 0:
 			try:
 				my_rep = Report.objects.get(id=id, user = self.my_user)
@@ -122,10 +124,40 @@ class ReportForm(forms.Form):
 				validation_error_list.append(forms.ValidationError("Report with id {} for user {} is not in DB.".format(id, self.my_user.id)
 																   + " If you need to create a new report don't provide an id",
 																   code='Invalid report id'))
+
+		# Check if solved is true or talse
 		if self.data.get("solved") and self.data.get("solved") != '':
 			if self.data.get("solved").upper() not in ['TRUE', 'FALSE']:
 				validation_error_list.append(forms.ValidationError("Solved Variable must be either true or false",
 																   code='Invalid solved flag'))
+		if validation_error_list:
+			raise forms.ValidationError(validation_error_list)
+
+
+class FetchReportForm(forms.Form):
+	username = forms.CharField(required=False)
+	priority = forms.CharField(required=False)
+	page = forms.IntegerField(required=False)
+
+	def clean(self):
+		username = self.data.get("username")
+		priority = self.data.get("priority")
+
+		validation_error_list = []
+
+		# Check if user exists
+		if username:
+			try:
+				my_user = User.objects.get(username=username)
+			except User.DoesNotExist:
+				validation_error_list.append(forms.ValidationError("User with username {} is not in DB".format(username),
+																   code='Invalid user id'))
+		if priority:
+			# Check if priority is high/low
+			if priority not in get_priotities():
+				validation_error_list.append(forms.ValidationError("Report Priority {} is not acceptable."
+																   " It must one of {}".format(priority,get_priotities()),
+																   code='Invalid priority'))
 		if validation_error_list:
 			raise forms.ValidationError(validation_error_list)
 

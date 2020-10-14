@@ -10,6 +10,7 @@ def get_titles():
 			title_list.append(e[0])
 	return title_list
 
+
 class EmployeeApiSerializer(serializers.Serializer):
 	username = serializers.CharField(required=True)
 	email = serializers.CharField(required=True)
@@ -65,6 +66,33 @@ class ReportApiSerializer(serializers.Serializer):
 
 	def get_title(self,obj):
 		return obj.get_gender_display()
+
+
+class FetchReportsSerializer(serializers.Serializer):
+	username = serializers.CharField(required=False)
+	priority = serializers.CharField(required=False,
+									 help_text="Only {} values are allowed".format(get_priotities()))
+	page = serializers.IntegerField(required=False,
+									help_text = "If you don't provide one it defaults to page 1")
+
+	class Meta:
+		ref_name =None
+
+
+class FooterSerializer(serializers.Serializer):
+	page = serializers.IntegerField(required=True)
+	total_pages = serializers.IntegerField(required=True)
+
+	class Meta:
+		ref_name =None
+
+
+class FetchReportsResponseSerializer(serializers.Serializer):
+	body = ReportApiSerializer(source='*', many=True)
+	footer =FooterSerializer(source='*', many=False)
+
+	class Meta:
+		ref_name =None
 
 
 class SucessResponseSerializer(serializers.Serializer):
