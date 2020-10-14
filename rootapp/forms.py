@@ -4,7 +4,7 @@ from django.contrib.auth.password_validation import get_default_password_validat
 from django.core.validators import RegexValidator
 from rootapp import models
 from rootapp.models import Department, Report
-from rootapp.serializers import get_priotities, get_report_title
+from rootapp.serializers import get_priotities, get_report_title, get_departments
 
 alphanumeric_symbols = RegexValidator(r'^[\w\$\d-]*$')
 numeric = RegexValidator(r'^[\d]*$')
@@ -47,8 +47,8 @@ class EmployeeForm(forms.Form):
 															   " It must be either male/ female".format(gender),
 															   code='Invalid gender'))
 		if self.data.get("department") not in Department.objects.values_list('name', flat=True):
-			validation_error_list.append(forms.ValidationError("Report Priority {} is not acceptable."
-															   " It must one of {}".format(priority,get_priotities()),
+			validation_error_list.append(forms.ValidationError("Department {} is not acceptable."
+															   " It must one of {}".format(self.data.get("department"),get_departments()),
 															   code='Invalid deparment'))
 
 		if not any(self.data.get("title") == e[0] for e in models.TITLE_CHOICES):
