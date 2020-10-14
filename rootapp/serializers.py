@@ -57,7 +57,7 @@ def get_report_title():
 
 class ReportApiSerializer(serializers.Serializer):
 	title = serializers.CharField(required=True,
-								  help_text="Only {} values are allowed".format(get_report_title()))
+								  help_text="Only {} values are allowed (Consumables,Promotion,Expenses,Support)".format(get_report_title()))
 	description = serializers.CharField(required=True)
 	user_id = serializers.IntegerField(required=True)
 	id = serializers.IntegerField(required=False,

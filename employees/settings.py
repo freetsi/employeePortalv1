@@ -171,16 +171,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 LOG_PATH = "C:\logs\employees_app.log"
 
-# DEPLOY_TRG = env['DEPLOY']['DEPLOY_TRG']
-# try:
-#     # In production environments (DEBUG=False): check if Django starts up
-#     # from the console (python manage.py) instead of wsgi (web server)
-#     if BASE_DIR != DEPLOY_TRG and not DEBUG:
-#         # It is console, use project's local path for logging
-#         LOG_PATH = os.path.join(BASE_DIR, 'tmp.log.local')
-# except IndexError:
-#     pass
-
 LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
