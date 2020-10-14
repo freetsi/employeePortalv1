@@ -10,7 +10,7 @@ router = DefaultRouter()
 urlpatterns = [
 	path('post/employee/', views.EmployeesApiView.as_view(), name='employee'),
 	path('post/report/', views.ReportsApiView.as_view(), name='report'),
-	path('fetch/reports/', views.FetchReportsApiView.as_view(), name='report'),
+	path('fetch/reports/', views.FetchReportsApiView.as_view(), name='report_fetch'),
 	url(r'^logs/$', Logs.as_view(), name='logs'),
 	url(r'^logs/log/', Logs.readlog, name='readlog'),
 ]

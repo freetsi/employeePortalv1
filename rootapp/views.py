@@ -143,6 +143,8 @@ class ReportsApiView(GenericAPIView):
 # API 3 Querying of the database in order to retrieve reports paginated by 10
 #
 class FetchReportsApiView(GenericAPIView):
+	""" Querying of the database in order to retrieve reports. If you need to filter results you may user username,
+	priority or both. Results are paginated by 10."""
 	permission_classes = (IsAuthenticated,)
 
 	@swagger_auto_schema(

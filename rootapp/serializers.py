@@ -24,7 +24,7 @@ class EmployeeApiSerializer(serializers.Serializer):
 	department = serializers.CharField(required=True,
 									   help_text="'Name' field from Department Model")
 	birthDate = serializers.CharField(required=False,
-									  help_text="In 'dd/mm/yy' format")
+									  help_text="In 'dd/mm/yyyy' format")
 	phone = serializers.CharField(required=False)
 	mobile = serializers.CharField(required=False)
 	address = serializers.CharField(required=False)
