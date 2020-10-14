@@ -1,49 +1,5 @@
 # Employee Report Technical Specifications
 
-# Contents
-
-[Employee Report Technical Specifications 1](#_Toc53584345)
-
-[Description 2](#_Toc53584346)
-
-[Document Structure 2](#_Toc53584347)
-
-[Architecture 2](#_Toc53584348)
-
-[Requirements 2](#_Toc53584349)
-
-[Requirements and how to run the application 2](#_Toc53584350)
-
-[Testing + API Documentation 3](#_Toc53584351)
-
-[Core Functionality 3](#_Toc53584352)
-
-[Data Modelling 3](#_Toc53584353)
-
-[Back Office 3](#_Toc53584354)
-
-[Logging in 4](#_Toc53584355)
-
-[Home Page 4](#_Toc53584356)
-
-[Header (1) 4](#_Toc53584357)
-
-[Api Tester 5](#_Toc53584358)
-
-[Api Documentation 6](#_Toc53584359)
-
-[Employees (2) 6](#_Toc53584360)
-
-[Departments (3) 6](#_Toc53584361)
-
-[Reports (4) 7](#_Toc53584362)
-
-[Logs (5) 7](#_Toc53584363)
-
-[Audit(6) 7](#_Toc53584364)
-
-[Python Testing 8](#_Toc53584365)
-
 # Description
 
 This project acts as a reporting system of a company and provides simple REST APIs for handling simple information storage and retrieval requests for employees&#39; reports. In parallel, a back-office module is provided for handling employees, reports, employees&#39; departments, and log/ audit management.
@@ -54,7 +10,7 @@ The first part outlines architecture and technology stack and the second part re
 
 # Architecture
 
-![](RackMultipart20201014-4-1hp6pba_html_e98bdda42486bad5.png)
+![alt text](https://i.imgur.com/Lzyl5BW.png)
 
 ## Requirements
 
@@ -83,15 +39,18 @@ In your command line type python -m pip install -U pip
 
 ## Data Modelling
 
-Employees: Django&#39;s default user model was used to depict each employee. Profiles model acts as a one to one relationship model which provides additional employees info such as mobile, address, department, gender etc.
+### Employees
+Django&#39;s default user model was used to depict each employee. Profiles model acts as a one to one relationship model which provides additional employees info such as mobile, address, department, gender etc.
+![alt text](https://i.imgur.com/9NgRFA7.png)
 
-![](RackMultipart20201014-4-1hp6pba_html_35df5e758c98f474.png)
+### Reports
+This model depicts report entries and has a foreign key relationship with usermodel
+![alt text](https://i.imgur.com/frT0l4d.png)
 
-Reports: This model depicts report entries and has a foreign key relationship with usermodel
+### Departments
+This model describes department entries of the company. Each department has an autoincrement id and a description.
+![alt text](https://i.imgur.com/frT0l4d.png)
 
-![](RackMultipart20201014-4-1hp6pba_html_6c1ed13f0884cc38.png)
-
-Departments: This model describes department entries of the company. Each department has an autoincrement id and a description.
 
 ## Back Office
 
@@ -101,7 +60,7 @@ Business Admin Console Interface is an interface available to users that belong 
 
 Start by typing the url &#39;http//localhost:8000/&#39; on your browser
 
-![](RackMultipart20201014-4-1hp6pba_html_823f6d3a584c8164.png)
+![alt text](https://i.imgur.com/DfMhO3l.png)
 
 Use admin/ man123qwe credentials. Admin user is already set up and member of the Admin Group.
 
@@ -109,7 +68,7 @@ Use admin/ man123qwe credentials. Admin user is already set up and member of the
 
 This is the first page of the admin console. Navigate to this page from anywhere by clicking the Logo or the home menu option
 
-![](RackMultipart20201014-4-1hp6pba_html_377a5489f656885c.png)
+![alt text](https://i.imgur.com/QNWXi56.png)
 
 #### Header (1)
 
@@ -121,15 +80,15 @@ If you click on the &quot;log out&quot; action then you will be logged out from 
 
 By clicking this action, you will navigate to an interface where you can test each api separately
 
-![](RackMultipart20201014-4-1hp6pba_html_a708a95723ae59df.png)
+![alt text](https://i.imgur.com/f0Iu0Om.png)
 
 You may need to perform an authorization with the admin/ man123qwe (Basic authentication) to test the APIs. &quot;Fetch&quot; section contains the api for retrieving reports query (GET request). &quot;Post&quot; section contains the apis for initiating or updating employees and report records (POST requests)
 
-![](RackMultipart20201014-4-1hp6pba_html_b254f71d68618a31.png)
+![alt text](https://i.imgur.com/p51eVue.png)
 
 You can try out each of these apis with the &quot;try it out button&quot;. The request and response payload are all set up and ready to use with your desired values. Form Validations are also active so you can test anything you wish.
 
-![](RackMultipart20201014-4-1hp6pba_html_bb77da9983058883.png)
+![alt text](https://i.imgur.com/yDFj8fT.png)
 
 ##### Api Documentation
 
@@ -139,31 +98,31 @@ By clicking this action, you will navigate to an interface where you can see the
 
 Page for viewing/ modifying employee records.
 
-![](RackMultipart20201014-4-1hp6pba_html_e3d36b74ae00f1d8.png)
+![alt text](https://i.imgur.com/fAiZ7mh.png)
 
 #### Departments (3)
 
 Page for viewing/ modifying department records.
 
-![](RackMultipart20201014-4-1hp6pba_html_453646eb5d1c2e69.png)
+![alt text](https://i.imgur.com/p4a8YqM.png)
 
 #### Reports (4)
 
 Page for viewing/ modifying report records.
 
-![](RackMultipart20201014-4-1hp6pba_html_9badc048707d64bd.png)
+![alt text](https://i.imgur.com/cskUXS2.png)
 
 #### Logs (5)
 
 Page for viewing full application log
 
-![](RackMultipart20201014-4-1hp6pba_html_29ea89b6b50df4ee.png)
+![alt text](https://i.imgur.com/dLqim9y.png)
 
 #### Audit(6)
 
 Full stack trace of the web services and business admin console apps listed by month.
 
-![](RackMultipart20201014-4-1hp6pba_html_28bc604f57977b29.png)
+!![alt text](https://i.imgur.com/OjOWzaz.png)
 
 ## Python Testing
 
@@ -171,7 +130,7 @@ Test file is located in test.py under &#39;rootapp&#39; app. You can run the tes
 
 Python manage.py test
 
-![](RackMultipart20201014-4-1hp6pba_html_a8b5958a6d0bba38.png)
+![alt text](https://i.imgur.com/qKXmf0A.png)
 
 We can change payload to make the test fail or write more complicated tests.
 
