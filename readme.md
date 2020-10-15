@@ -30,7 +30,7 @@ In your command line type 'python -m pip install -U pip'
 6. 'pip install -r requirements.txt' to install all the required packages into your environment
 7. DB (sqlite) will also come into the project with git pull. No migrations are needed.
 8. Please set and ensure that LOG_PATH from settings.py exist in your machine.
-9. python mange.py runserver to start server
+9. 'python manage.py runserver' to start server
 
 ## Testing + API Documentation
 
@@ -93,7 +93,7 @@ You can try out each of these apis with the &quot;try it out button&quot;. The r
 
 ##### Api Documentation
 
-By clicking this action, you will navigate to an interface where you can see the full documentation and request and response payloads for each api separately
+By clicking this action, you will navigate to an interface where you can see the full documentation as well as request and response payloads for each api separately
 
 #### Employees (2)
 
@@ -129,10 +129,13 @@ Full stack trace of the web services and business admin console apps listed by m
 
 Test file is located in test.py under &#39;rootapp&#39; app. You can run the test with the following command
 
-Python manage.py test
+'python manage.py test'
 
 ![alt text](https://i.imgur.com/qKXmf0A.png)
 
 We can change payload to make the test fail or write more complicated tests.
 
-#
+## Ιmprovements
+We could configure Django settings for multiple enviroments with different '.env' files with the desired settings.py variables.
+We could read the values of these variables from the configuration file insead of directrly declaring them in settings.py. 
+This is very useful in deploying the app in UAT and production, where I need different settings for each server.

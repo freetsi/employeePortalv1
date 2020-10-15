@@ -193,10 +193,10 @@ LOGGING = {
         },
         'default': {
             'level': 'INFO',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'when': 'midnight',
-            'interval': 2,
-            'backupCount': 7,
+            'class': 'logging.FileHandler',
+            # 'when': 'midnight',
+            # 'interval': 1,
+            # 'backupCount': 7,
             'filename': LOG_PATH,
             'formatter': 'standard',
             'encoding': 'utf8',
@@ -206,7 +206,7 @@ LOGGING = {
         '': {
             'handlers': ['default'],
             'level': 'INFO',
-            'propagate': True,
+            # 'propagate': True,
         },
     }
 }
