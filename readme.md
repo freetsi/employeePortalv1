@@ -136,6 +136,4 @@ Test file is located in test.py under &#39;rootapp&#39; app. You can run the tes
 We can change payload to make the test fail or write more complicated tests.
 
 ## Ιmprovements
-We could configure Django settings for multiple enviroments with different '.env' files with the desired settings.py variables.
-We could read the values of these variables from the configuration file insead of directrly declaring them in settings.py. 
-This is very useful in deploying the app in UAT and production, where I need different settings for each server.
+We could dockerize the app for eazy deployment! We should also declare many django variables such as db host port etc as environment  variables and we should set them on docker-compose
