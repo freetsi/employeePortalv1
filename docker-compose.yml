@@ -1,0 +1,19 @@
+version: "3.9"
+
+volumes: 
+   postgres:
+
+networks:
+  employee_portal:
+    name: employee_portal-sb
+   
+services:
+
+  web:
+    build: .
+    ports:
+      - "${BACK_END_PORT}:8000"
+    networks:
+      - employee_portal
+    volumes:
+      - ./logs:/employee_portal/logs

@@ -14,11 +14,16 @@ The first part outlines architecture and technology stack and the second part re
 
 ## Requirements
 
+**Docker** : If you want to deploy the app via Docker then you have to install docker on your pc
+
 **Sqlite** : Since I had to implement only 3 simple endpoints no access to real database was needed. Additionally, sqlite has the power of a relation DB without the overhead of having a separate DB server.
 
 **Python + Django Rest Framework** : Django is an open source web framework that helps you create a web app quickly as it takes care of additional web-development needs. Django Rest Framework&#39;s modular, flexible, and customizable architecture makes the development of both simple, turnkey API endpoints and complicated REST constructs possible.
 
-## Requirements and how to run the application
+## Requirements and how to run the application via docker
+simply run "docker-compose up --build". Because the sqlite3 db is pushed into git repo, we don't need any migrations.
+
+## Requirements and how to run the application locally
 
 1. A console emulator ([cmder](https://cmder.net/) was used during development)
 2. **Python Set up** Python 3.7.4 was used
@@ -134,6 +139,3 @@ Test file is located in test.py under &#39;rootapp&#39; app. You can run the tes
 ![alt text](https://i.imgur.com/qKXmf0A.png)
 
 We can change payload to make the test fail or write more complicated tests.
-
-## Ιmprovements
-We could dockerize the app for eazy deployment! We should also declare many django variables such as db host port etc as environment  variables and we should set them on docker-compose

@@ -169,7 +169,7 @@ STATICFILES_FINDERS = (
 LOGIN_REDIRECT_URL = '/console'
 LOGOUT_REDIRECT_URL = '/'
 
-LOG_PATH = "C:\logs\employees_app.log"
+LOG_PATH = os.path.join(BASE_DIR, 'logs','employee_portal.logs')
 
 LOGGING_CONFIG = None
 LOGGING = {
@@ -201,10 +201,15 @@ LOGGING = {
             'formatter': 'standard',
             'encoding': 'utf8',
         },
+        'default2': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
     },
     'loggers': {
         '': {
-            'handlers': ['default'],
+            'handlers': ['default','default2'],
             'level': 'INFO',
             # 'propagate': True,
         },

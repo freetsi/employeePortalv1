@@ -1,0 +1,101 @@
+2022-06-27 10:46:17,518 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2022-06-27 10:46:22,261 [ERROR] rootapp.views: Error in def Openlog: Specified \n as separator or delimiter. This forces the python engine which does not accept a line terminator. Hence it is not allowed to use the line terminator as separator.
+2022-06-27 10:46:22,292 [ERROR] django.request: Internal Server Error: /api/logs/
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/employee_portal/rootapp/views.py", line 233, in get
+    lines = len(log_data.index)
+AttributeError: 'NoneType' object has no attribute 'index'
+2022-06-27 10:46:22,295 [ERROR] django.server: "GET /api/logs/ HTTP/1.1" 500 74074
+2022-06-27 10:46:23,495 [ERROR] rootapp.views: Error in def Openlog: Specified \n as separator or delimiter. This forces the python engine which does not accept a line terminator. Hence it is not allowed to use the line terminator as separator.
+2022-06-27 10:46:23,518 [ERROR] django.request: Internal Server Error: /api/logs/
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/employee_portal/rootapp/views.py", line 233, in get
+    lines = len(log_data.index)
+AttributeError: 'NoneType' object has no attribute 'index'
+2022-06-27 10:46:23,520 [ERROR] django.server: "GET /api/logs/ HTTP/1.1" 500 74074
+2022-06-27 10:46:27,698 [ERROR] rootapp.views: Error in def Openlog: Specified \n as separator or delimiter. This forces the python engine which does not accept a line terminator. Hence it is not allowed to use the line terminator as separator.
+2022-06-27 10:46:27,723 [ERROR] django.request: Internal Server Error: /api/logs/
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/employee_portal/rootapp/views.py", line 233, in get
+    lines = len(log_data.index)
+AttributeError: 'NoneType' object has no attribute 'index'
+2022-06-27 10:46:27,724 [ERROR] django.server: "GET /api/logs/ HTTP/1.1" 500 73937
+2022-06-27 10:57:08,587 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2022-06-27 10:57:19,026 [ERROR] rootapp.views: Error in def Openlog: Expected 2 fields in line 5, saw 3
+2022-06-27 10:57:19,063 [ERROR] django.request: Internal Server Error: /api/logs/
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/opt/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/opt/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/employee_portal/rootapp/views.py", line 234, in get
+    lines = len(log_data.index)
+AttributeError: 'NoneType' object has no attribute 'index'
+2022-06-27 10:57:19,065 [ERROR] django.server: "GET /api/logs/ HTTP/1.1" 500 74324
+2022-06-27 10:58:20,627 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2022-06-27 10:58:23,732 [INFO] django.server: "GET /api/logs/ HTTP/1.1" 200 9097
+2022-06-27 10:58:23,755 [INFO] django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2022-06-27 10:58:23,758 [INFO] django.server: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2022-06-27 10:58:23,758 [INFO] django.server: "GET /static/css/dashboard.css HTTP/1.1" 304 0
+2022-06-27 10:58:23,760 [INFO] django.server: "GET /static/js/jquery-3.4.1.min.js HTTP/1.1" 304 0
+2022-06-27 10:58:23,765 [INFO] django.server: "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2022-06-27 10:58:23,786 [INFO] django.server: "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+2022-06-27 10:58:23,786 [INFO] django.server: "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+2022-06-27 10:58:23,786 [INFO] django.server: "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+2022-06-27 10:58:33,063 [INFO] django.server: "GET /console/ HTTP/1.1" 200 5009
+2022-06-27 10:58:33,085 [INFO] django.server: "GET /static/images/employee.png HTTP/1.1" 304 0
+2022-06-27 10:58:33,085 [INFO] django.server: "GET /static/images/department.jpg HTTP/1.1" 304 0
+2022-06-27 10:58:33,096 [INFO] django.server: "GET /static/images/logs.png HTTP/1.1" 304 0
+2022-06-27 10:58:33,097 [INFO] django.server: "GET /static/images/audit.jpg HTTP/1.1" 304 0
+2022-06-27 10:58:33,097 [INFO] django.server: "GET /static/images/reports.png HTTP/1.1" 304 0
+2022-06-27 10:58:34,098 [INFO] django.server: "GET /console/ HTTP/1.1" 200 5009
+2022-06-27 10:58:35,508 [INFO] django.server: "GET /admin/admin/logentry/ HTTP/1.1" 200 18274
+2022-06-27 10:58:35,536 [INFO] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,537 [INFO] django.server: "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,538 [INFO] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2022-06-27 10:58:35,540 [INFO] django.server: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,543 [INFO] django.server: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+2022-06-27 10:58:35,546 [INFO] django.server: "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,546 [INFO] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,548 [INFO] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,552 [INFO] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,553 [INFO] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,557 [INFO] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2022-06-27 10:58:35,582 [INFO] django.server: "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2022-06-27 10:58:35,590 [INFO] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0

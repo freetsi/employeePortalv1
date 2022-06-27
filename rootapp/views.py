@@ -1,3 +1,4 @@
+import csv
 import json
 import logging
 import re
@@ -258,7 +259,9 @@ def openLog():
 	try:
 		pd.set_option('display.max_colwidth', 0)
 		filepath = settings.LOG_PATH
-		data = pd.read_csv(filepath, sep='\n', engine='python', header=None)
+		data = pd.read_csv(filepath, sep='r\n', engine='python', header=None, quoting=csv.QUOTE_NONE)
+		print("hahahahaha")
+		print(data)
 		return data
 	except Exception as e:
 		logger.error("Error in def Openlog: {}".format(e))
